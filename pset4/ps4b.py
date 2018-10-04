@@ -33,9 +33,14 @@ def compChooseWord(hand, wordList, n):
     # Create a new variable to store the best word seen so far (initially None)
     bestWord = None
 
+<<<<<<< HEAD
     # Then, start from largest length to length of 1
     # Find list of words using regex, e.g. ^[abcdef]{8}$
     pattern = '^[' + charSet + ']' + '{1,' + str(n) + '}$'
+=======
+    # Find list of words using regex, e.g. ^[abcdef]{8}$
+    pattern = '^[' + charSet + ']' + '{1,' + str(x) + '}$'
+>>>>>>> 463dc4c4d7fd8b5ea55e0ca645fd53b5efc9773a
     pattern = re.compile(pattern, re.M)
     matches = re.findall(pattern, temp)
 
