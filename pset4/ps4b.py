@@ -34,22 +34,21 @@ def compChooseWord(hand, wordList, n):
     bestWord = None
 
     # Then, start from largest length to length of 1
-    for x in range(n, 0, -1):
-        # Find list of words using regex, e.g. ^[abcdef]{8}$
-        pattern = '^[' + charSet + ']' + '{' + str(x) + '}$'
-        pattern = re.compile(pattern, re.M)
-        matches = re.findall(pattern, temp)
+    # Find list of words using regex, e.g. ^[abcdef]{8}$
+    pattern = '^[' + charSet + ']' + '{1,' + str(n) + '}$'
+    pattern = re.compile(pattern, re.M)
+    matches = re.findall(pattern, temp)
 
-        for match in matches:
-            # If you can construct the word from your hand
-            if isValidWord(match, hand, wordList):
-                # find out how much making that word is worth
-                score = getWordScore(match, n)
-                # If the score for that word is higher than your best score
-                if (score > bestScore):
-                    # update your best score, and best word accordingly
-                    bestScore = score
-                    bestWord = match
+    for match in matches:
+        # If you can construct the word from your hand
+        if isValidWord(match, hand, wordList):
+            # find out how much making that word is worth
+            score = getWordScore(match, n)
+            # If the score for that word is higher than your best score
+            if (score > bestScore):
+                # update your best score, and best word accordingly
+                bestScore = score
+                bestWord = match
 
     # return the best word you found.
     return bestWord
